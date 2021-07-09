@@ -52,7 +52,29 @@ class VaccinationQRCodeExtractor @Inject constructor(
     }
 
     fun RawCOSEObject.parse(): VaccinationCertificateData {
+        Timber.v("Checking for Validity")
+
+
+        // Instantiate the RequestQueue.
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://localhost:3000/"
+
+        // Request a string response from the provided URL.
+        val stringRequest = StringRequest(Request.Method.GET, url,
+            Response.Listener<String> { response ->
+                // Display the first 500 characters of the response string.
+                if(response != null){
+                    if(response[used] == 1)
+                    throw InvalidHealthCertificateException(HC_ZLIB_DECOMPRESSION_FAILED)
+                } else {
+                    throw InvalidHealthCertificateException(HC_ZLIB_DECOMPRESSION_FAILED)
+                }
+            },
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest)
         Timber.v("Parsing COSE for vaccination certificate.")
+
         val cbor = coseDecoder.decode(this)
 
         return VaccinationCertificateData(

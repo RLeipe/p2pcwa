@@ -1,9 +1,9 @@
 {
   "PROD": {
     "USE_EUR_KEY_PKGS": true,
-    "SUBMISSION_CDN_URL": "https://submission.coronawarn.app",
+    "SUBMISSION_CDN_URL": "http://localhost:8000",
     "DOWNLOAD_CDN_URL": "https://svc90.main.px.t-online.de",
-    "VERIFICATION_CDN_URL": "https://verification.coronawarn.app",
+    "VERIFICATION_CDN_URL": "http://localhost:8004/version/v1/tan/verify",
     "DATA_DONATION_CDN_URL": "https://data.coronawarn.app",
     "LOG_UPLOAD_SERVER_URL": "https://logupload.coronawarn.app",
     "SAFETYNET_API_KEY": "placeholder",
